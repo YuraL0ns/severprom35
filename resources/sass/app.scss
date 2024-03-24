@@ -1,8 +1,46 @@
 // Fonts
-@import url('https://fonts.bunny.net/css?family=Nunito');
+@import url(https://fonts.bunny.net/css?family=roboto:100,300,400,500,700,900);
 
-// Variables
-@import 'variables';
+// VARIABLES
 
-// Bootstrap
-@import 'bootstrap/scss/bootstrap';
+@import './mixin.scss';
+
+// Color
+$black: #2d2d2d;
+$white: #fff;
+$gray: #777879;
+$blue: #2164ed;
+$orange: #ff6227;
+$darken: #1e2f52;
+
+
+// Padding
+$pd-default: 10px;
+$pd-merge: 10px 15px;
+
+
+// Border
+$b-one-px: 1px solid $black;
+$b-two-px: 2px solid $black;
+$b-none: none;
+$b-radius: 10px;
+
+
+// Shadow
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul,
+li {list-style-type: none;}
+a {text-decoration: none;}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: $black;
+    background-color: $white;
+}
