@@ -40,7 +40,11 @@ a {text-decoration: none;}
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
+    @include phone {font-size: 14px;}
     font-weight: 400;
     color: $black;
     background-color: $white;
 }
+
+
+  
