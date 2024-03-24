@@ -10,6 +10,22 @@
     @media screen and (min-width: 769px) and (max-width: 1199px) {@content}
 };
 
-@mixin desctop {
+@mixin desktop {
     @media screen and (min-width: 1200px){@content}
 };
+@mixin container {
+    margin: 0 auto;
+    width: 1200px;
+    padding: 15px 0;
+}
+@mixin df-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+@mixin list-row($colgap) {
+    display: flex;
+    flex-direction: row;
+    column-gap: $colgap;
+}

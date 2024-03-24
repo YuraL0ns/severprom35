@@ -1,17 +1,17 @@
 // Fonts
 @import url(https://fonts.bunny.net/css?family=roboto:100,300,400,500,700,900);
+@import url(https://fonts.bunny.net/css?family=montserrat:500,800);
 
 // VARIABLES
 
 @import './mixin.scss';
 
 // Color
+$red: #e01c42;
 $black: #2d2d2d;
-$white: #fff;
+$white: #ffffff;
 $gray: #777879;
-$blue: #2164ed;
-$orange: #ff6227;
-$darken: #1e2f52;
+$grayhover: #77787920;
 
 
 // Padding
@@ -24,6 +24,7 @@ $b-one-px: 1px solid $black;
 $b-two-px: 2px solid $black;
 $b-none: none;
 $b-radius: 10px;
+$b-radius-circle: 100%;
 
 
 // Shadow
@@ -42,10 +43,145 @@ body {
     font-size: 16px;
     @include phone {font-size: 14px;}
     font-weight: 400;
-    color: $white;
-    background-color: $black;
+    color: $black;
+    background-color: $white;
 }
-.header-container {
-    width: 1200px;
-    margin: 0 auto;
+
+.header,
+.navbar,
+.main,
+.footer {
+    &-container{
+        @include container;
+    }
+}
+.navbar {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $grayhover;
+    margin-bottom: 50px;
+    background-color: $red;
+    &-wrapper {
+        @include df-wrapper;
+    }
+    &-phone,
+    &-email,
+    &-adres {
+        width: 100%;
+        display: flex;
+        column-gap: 20px;
+        flex-direction: row;
+        align-items: center;
+        & > a {
+            display: flex;
+            column-gap: $pd-default;
+            flex-direction: row;
+            color: $black;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+    }
+}
+.header {
+    margin-bottom: 50px;
+    &-wrapper{
+        @include df-wrapper;
+    }
+    &-logo {
+        &-link {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        &-images{
+            width: 80px;
+            height: 80px;
+        }
+        &-text{
+            display: flex;
+            flex-direction: column;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: $black;
+            &-span{
+                font-size: .47rem;
+                font-weight: 500;
+            }
+        }
+        }
+    }
+    &-menu {
+        &-list {
+            @include list-row(25px);
+            &-item{
+                &-link{
+                    color: $black;
+                    font-size: 1rem;
+                    transition: all .4s ease;
+                    &:hover {
+                        color: $red;
+                    }
+                }
+            }
+        }
+    }
+    &-user {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        column-gap: 25px;
+        &-profile{
+            &-link{
+                &-images{
+                    border-radius: $b-radius-circle;
+                    height: 50px;
+                    width: 50px;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        }
+        &-basket {
+            & > a {
+                color: $red;
+                font-size: 1.6rem;
+            }
+        }
+    }
+}
+.footer {
+    margin-top: 25px;
+    &-wrapper {
+        @include df-wrapper;
+    }
+    &-menu{
+        &-list {
+            @include list-row(15px);
+            &-item{
+                &-link{
+
+                }
+            }
+        }
+    }
+    &-contacts{
+        &-list {
+            display: flex;
+            column-gap: 15px;
+            &-item{
+                &-link{
+
+                }
+            }
+        }
+    }
+}
+.main {
+    &-wrapper {
+        @include df-wrapper;
+    }
 }

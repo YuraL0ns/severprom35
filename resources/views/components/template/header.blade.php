@@ -1,8 +1,14 @@
 <section class="header">
-    <div class="header-container">
+    <div class="header-container header-wrapper">
         <div class="header-logo">
-            <a href="#">
-                <img src="{{ asset('images/logo.svg') }}" alt="{{ env('APP_NAME') }}">
+            <a class="header-logo-link" href="#">
+                <img class="header-logo-link-images" src="{{ asset('images/logo/Logo_1.svg') }}" alt="{{ env('APP_NAME') }}">
+                <div class="header-logo-link-text">Стройпромснаб
+                    <span class="header-logo-link-text-span">
+                        Грузоподъемное, сварочное, складское оборудование
+                    </span>
+                </div>
+
             </a>
         </div>
         <div class="header-menu">
@@ -36,12 +42,18 @@
                 </a>
             </div>
             <div class="header-user-profile">
-               @if (Auth::user() == 1)
-                <a href="#">
-                    <img src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}">
+               @if (Auth::user())
+                <a class="header-user-profile-link" href="#">
+                    <img class="header-user-profile-link-images" src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}">
                 </a>
-               @endif
+                @else
+                    <div class="header-user-profile-non">
+                        <a class="header-user-profile-non-link" href="/login">Войти</a>
+                        <a class="header-user-profile-non-link" href="/register">Регистрация</a>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
 </section>
+
