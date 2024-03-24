@@ -2,10 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\MainController;
 
-Route::get('/', function(){
-    return view('test.page');
-});
+Route::name('sait.')
+    ->group(function(){
+        Route::get('/', [MainController::class, 'homePage'])->name('home');
+    });
 
 Auth::routes();
 

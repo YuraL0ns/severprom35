@@ -42,6 +42,10 @@ body {
     font-size: 16px;
     @include phone {font-size: 14px;}
     font-weight: 400;
-    color: $black;
-    background-color: $white;
+    color: $white;
+    background-color: $black;
+}
+.header-container {
+    width: 1200px;
+    margin: 0 auto;
 }
