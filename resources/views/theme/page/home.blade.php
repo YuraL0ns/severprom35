@@ -1,4 +1,39 @@
 @extends('theme.default')
 @section('content')
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis consequuntur, earum iusto dolor saepe vel animi dolore soluta officia, eum delectus, est consequatur? Laboriosam exercitationem laborum molestiae, iure esse magni corrupti nobis blanditiis ducimus nemo quo obcaecati autem dolores inventore dolorem repudiandae repellat debitis id nulla dolorum expedita mollitia! Laboriosam, assumenda! Officia, assumenda delectus quis maxime magnam cum voluptatem quos? Provident magni rerum iusto! Eius sapiente ipsam modi earum voluptatem inventore ducimus voluptas itaque soluta esse. Minus error tempore maiores consequatur tempora harum aliquid itaque possimus nam mollitia fugiat voluptatibus, ipsam laudantium est eius beatae temporibus doloribus amet porro sapiente.
+
+    <div class="category">
+        <div class="category-wrapper">
+
+            <div class="category-items">
+
+                <a class="category-item" href="#">
+                    <img src="" alt="category-item-images">
+                    <span class="category-item-name">Наименование категории</span>
+                </a>
+
+                <a class="category-item" href="#">
+                    <img src="" alt="category-item-images">
+                    <span class="category-item-name">Наименование категории</span>
+                </a>
+
+                <a class="category-item" href="#">
+                    <img src="" alt="category-item-images">
+                    <span class="category-item-name">Наименование категории</span>
+                </a>
+
+                <a class="category-item" href="#">
+                    <img src="" alt="category-item-images">
+                    <span class="category-item-name">Наименование категории</span>
+                </a>
+
+                <a class="category-item" href="#">
+                    <img src="" alt="category-item-images">
+                    <span class="category-item-name">Наименование категории</span>
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+
 @endsection
