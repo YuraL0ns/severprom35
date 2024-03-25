@@ -4,14 +4,17 @@
     <div class="category">
         <div class="category-wrapper">
 
+
             <div class="category-items">
 
-                <ul>
+                <ul style="column: 2;">
+                @foreach($categories as $category)
                     <li>
-                        <a href="link">
-                            name
+                        <a href="{{ route('categories.show', $category) }}">
+                            {{$category->name}}
                         </a>
                     </li>
+                @endforeach
                 </ul>
 
                 {{-- <a class="category-item" href="#">

@@ -11,18 +11,13 @@ use App\Http\Controllers\ProductCharacteristicController;
 Route::name('sait.')
     ->group(function(){
         Route::get('/', [MainController::class, 'homePage'])->name('home');
-        Route::get('test-xml', [MainController::class, 'getXmlTest']);
         Route::get('/1', [CategoryController::class, 'importFromXml']);
         Route::get('/2', [ProductController::class, 'importFromXml']);
     });
-// Маршруты для категорий
-Route::resource('categories', CategoryController::class);
+    Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+    Route::get('/categories/{id}', [CategoryController::class, 'show'])->name('categories.show');
+    Route::get('/categories/{id}/{article}', [ProductController::class, 'show'])->name('products.show');
 
-// Маршруты для продуктов
-Route::resource('products', ProductController::class);
-
-// Маршруты для характеристик продуктов
-Route::resource('product-characteristics', ProductCharacteristicController::class);
 Auth::routes();
 
 Route::prefix('administrator')

@@ -17,17 +17,8 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view('categories.index', compact('categories'));
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('categories.create');
+        return view('theme.page.categories.index', compact('categories'));
     }
 
     public function importFromXml()
@@ -38,6 +29,12 @@ class CategoryController extends Controller
         $xml = new \SimpleXMLElement($xmlContent);
 
         foreach ($xml->Разделы->Раздел as $categoryXml) {
+            $categoryExists = Category::where('code', (string)$categoryXml->Код)->exists();
+            if ($categoryExists) {
+                // Если категория не существует, пропускаем этот продукт
+                continue;
+            }
+
             $category = new Category();
 
             $category->code = (string)$categoryXml->Код;
@@ -51,82 +48,22 @@ class CategoryController extends Controller
         return "Категории успешно импортированы из XML файла.";
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|unique:categories|max:255',
-            'code' => 'required|unique:categories|max:255',
-            'parent_code' => 'nullable|max:255',
-            'description' => 'nullable',
-        ]);
-
-        Category::create($request->all());
-
-        return redirect()->route('categories.index')
-            ->with('success', 'Category created successfully.');
-    }
 
     /**
-     * Display the specified resource.
+     * Отображает конкретную категорию и ее продукты.
      *
-     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($id)
     {
-        return view('categories.show', compact('category'));
+        $category = Category::find($id);
+            if (!$category) {
+                abort(404);
+            }
+        $products = $category->products;
+        
+        return view('theme.page.categories.show', compact('category', 'products'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Category $category)
-    {
-        return view('categories.edit', compact('category'));
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Category $category)
-    {
-        $request->validate([
-            'name' => 'required|max:255',
-            'code' => 'required|max:255',
-            'parent_code' => 'nullable|max:255',
-            'description' => 'required',
-        ]);
-
-        $category->update($request->all());
-
-        return redirect()->route('categories.index')
-            ->with('success', 'Category updated successfully');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Category $category)
-    {
-        $category->delete();
-
-        return redirect()->route('categories.index')
-            ->with('success', 'Category deleted successfully');
-    }
 }

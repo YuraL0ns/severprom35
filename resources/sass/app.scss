@@ -182,6 +182,7 @@ body {
 }
 .main {
     &-wrapper {
+        flex-wrap: wrap;
         @include df-wrapper;
     }
 }

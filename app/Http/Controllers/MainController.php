@@ -4,20 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Category;
+
 class MainController extends Controller
 {
     public function homePage() {
-       return view('theme.page.home');
+       return view('theme.page.home', [
+        'categories' => Category::all()
+       ]);
     }
 
-
-    public function getXmlTest()
-    {
-        $xmlContent = file_get_contents('https://cdn.wfp.org/iati/wfp.xml');
-
-        $xml = simplexml_load_string($xmlContent);
-
-        return view('test.xml', compact('xml'));
-
-    }
 }
