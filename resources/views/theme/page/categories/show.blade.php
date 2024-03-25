@@ -9,7 +9,10 @@
     <ul>
         @foreach ($category->products as $product)
             <li>
-                <a href="{{ route('products.show',['id' => $category->id, 'article' => $product->article]) }}">{{ $product->name }}</a>
+                <a href="{{ route('products.show',[
+                    'id' => $category->id, 
+                    'article' => $product->article
+                    ]) }}">{{ $product->name }}</a>
             </li>
         @endforeach
     </ul>

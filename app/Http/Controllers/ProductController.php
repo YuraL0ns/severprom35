@@ -51,17 +51,14 @@ class ProductController extends Controller
                     [
                         'name' => (string)$characteristicXml->Название,
                         'value' => (string)$characteristicXml->Значение
-                    ]
-                );
+                        ]
+                    );
+                }
             }
         }
     }
-
-    }
-    // dd($xml->offers);
-    // dd($xml->offers);
     return "Продукты успешно импортирован";
-    }
+}
 
     /**
      * Display a listing of the resource.
@@ -74,84 +71,19 @@ class ProductController extends Controller
         $products->count(); // Получаем продукты только для данной категории
         return view('products.index', compact('products'));
     }
-
-
     /**
-     * Show the form for creating a new resource.
+     * Отображает информацию о конкретном продукте.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function show(Product $product, $id, $article)
     {
-        return view('products.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\ProductRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $product = new Product($request->all());
-
-        // Сохраняем продукт
-        $product->save();
-
-        // Возвращаем успешный ответ
-        return response()->json(['message' => 'Product created successfully'], 201);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Product $product)
-    {
-        return view('products.show', compact('product'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Product $product)
-    {
-        return view('products.edit', compact('product'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\ProductRequest  $request
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function update(ProductRequest $request, Product $product)
-    {
-        // Обновляем данные продукта с данными из запроса
-        $product->update($request->all());
-
-        // Возвращаем успешный ответ
-        return response()->json(['message' => 'Product updated successfully'], 200);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Product $product)
-    {
-        $product->delete();
-
-        return redirect()->route('products.index')
-            ->with('success', 'Product deleted successfully');
+        $product = $product->where('article', $article)->first();
+        $product->characteristics();
+        if (!$product) {
+            abort('404');
+        }
+        // $product->characteristics();
+        return view('theme.page.products.show', compact('product'))->with('article', $article);
     }
 }

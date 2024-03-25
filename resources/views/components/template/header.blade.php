@@ -1,59 +1,55 @@
 <section class="header">
-    <div class="header-container header-wrapper">
-        <div class="header-logo">
-            <a class="header-logo-link" href="#">
-                <img class="header-logo-link-images" src="{{ asset('images/logo/Logo_1.svg') }}" alt="{{ env('APP_NAME') }}">
-                <div class="header-logo-link-text">Стройпромснаб
-                    <span class="header-logo-link-text-span">
-                        Грузоподъемное, сварочное, складское оборудование
-                    </span>
-                </div>
 
-            </a>
+    <div class="header-container header-wrapper">
+        <div class="logo">
+            <a href="{{ route('sait.home') }}">
+            <img src="{{ asset('images/logo.svg') }}" alt="{{ env("APP_NAME") }}"></a>
         </div>
-        <div class="header-menu">
-            <ul class="header-menu-list">
-                <li class="header-menu-list-item">
-                    <a href="#" class="header-menu-list-item-link">
-                        Главная
-                    </a>
+    
+        <div class="catalogs">
+            <a href="#">
+                <span>Каталог</span>
+                <ion-icon name="menu"></ion-icon>
+            </a>
+    
+            <div class="catalogs-menu">
+                <ul class="catalogs-menu-list">
+                    <li class="catalogs-menu-list-item">
+                        <a href="#">Грузоподъемное оборудование</a>
+                    </li>
+                    <li class="catalogs-menu-list-item">
+                        <a href="#">Складское оборудование</a>
+                    </li>
+                    <li class="catalogs-menu-list-item">
+                        <a href="#">Тангажное оборудование</a>
+                    </li>
+                    <li class="catalogs-menu-list-item">
+                        <a href="#">Автомобльное оборудование</a>
+                    </li>
+                </ul>
+            </div>
+    
+        </div>
+    
+        <div class="menu">
+            <ul class="menu-list">
+                <li class="menu-list-item">
+                    <a class="menu-list-item-link" href="{{ route('sait.home') }}">Главная</a>
                 </li>
-                <li class="header-menu-list-item">
-                    <a href="#" class="header-menu-list-item-link">
-                        Каталог
-                    </a>
+                <li class="menu-list-item">
+                    <a class="menu-list-item-link" href="#">Оплата и доставка</a>
                 </li>
-                <li class="header-menu-list-item">
-                    <a href="#" class="header-menu-list-item-link">
-                        Доставка
-                    </a>
+                <li class="menu-list-item">
+                    <a class="menu-list-item-link" href="#">Сервис и гарантия</a>
                 </li>
-                <li class="header-menu-list-item">
-                    <a href="#" class="header-menu-list-item-link">
-                        Контакты
-                    </a>
+                <li class="menu-list-item">
+                    <a class="menu-list-item-link" href="#">О магазине</a>
+                </li>
+                <li class="menu-list-item">
+                    <a class="menu-list-item-link" href="#">Контакты</a>
                 </li>
             </ul>
         </div>
-        <div class="header-user">
-            <div class="header-user-basket">
-                <a href="#" title="User Basket">
-                    <ion-icon name="basket"></ion-icon>
-                </a>
-            </div>
-            <div class="header-user-profile">
-               @if (Auth::user())
-                <a class="header-user-profile-link" href="#">
-                    <img class="header-user-profile-link-images" src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}">
-                </a>
-                @else
-                    <div class="header-user-profile-non">
-                        <a class="header-user-profile-non-link" href="/login">Войти</a>
-                        <a class="header-user-profile-non-link" href="/register">Регистрация</a>
-                    </div>
-                @endif
-            </div>
-        </div>
     </div>
-</section>
 
+</section>
