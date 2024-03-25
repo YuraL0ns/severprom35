@@ -59,98 +59,176 @@ body {
     height: 80px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid $grayhover;
-    margin-bottom: 50px;
-    background-color: $red;
     &-wrapper {
         @include df-wrapper;
     }
-    &-phone,
-    &-email,
-    &-adres {
-        width: 100%;
+    & .user {
         display: flex;
-        column-gap: 20px;
         flex-direction: row;
         align-items: center;
-        & > a {
-            display: flex;
-            column-gap: $pd-default;
-            flex-direction: row;
-            color: $black;
-            font-size: 1rem;
-            font-weight: 500;
+        column-gap: 20px;
+        &-link {
+            color: $red;
+            & ion-icon {
+                font-size: 1.3rem;
+            }
         }
     }
+    & .contacts {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        column-gap: 15px;
+        &-link {
+            display: flex;
+            align-items: center;
+            column-gap: 7px;
+            font-size: 1rem;
+            color: $red;
+            & > ion-icon  {
+                font-size: 1.3rem;
+                color: $red;
+            }
+        }
+    }
+   
 }
 .header {
-    margin-bottom: 50px;
+    background-color: $black;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    position: relative;
     &-wrapper{
         @include df-wrapper;
     }
-    &-logo {
+    & .logo {
         &-link {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-        &-images{
-            width: 80px;
-            height: 80px;
-        }
-        &-text{
-            display: flex;
-            flex-direction: column;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            color: $black;
-            &-span{
-                font-size: .47rem;
-                font-weight: 500;
+            &-images {
+                width: 300px;
             }
         }
-        }
     }
-    &-menu {
-        &-list {
-            @include list-row(25px);
-            &-item{
-                &-link{
-                    color: $black;
-                    font-size: 1rem;
-                    transition: all .4s ease;
-                    &:hover {
-                        color: $red;
+    & .catalogs {
+        position: relative;
+        height: 100px;
+        &-button {
+            position: absolute;
+            background-color: $red;
+            padding: 0 20px;
+            height: 100px;
+
+            color: $white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            & span {
+                font-size: 0.8rem;
+                font-weight: 500;
+            }
+            & ion-icon {
+                font-size: 56px;
+            }
+            &:hover {
+                background-color: $white;
+                color: $red;
+            }
+        }
+        & .catalogs-menu {
+            position: absolute;
+            top: 100%;
+            background-color: $red;
+            padding: 20px 0 2px;
+            width: 350px;
+            display: none;
+        
+            &-list {
+                display: flex;
+                flex-direction: column;
+                row-gap: 25px;
+        
+                &-item {
+                    position: relative; // Добавляем относительное позиционирование
+                    padding: 15px 0px ;
+                    border-bottom: 1px solid $white;
+        
+                    &:hover .catalogs-menu-list-item-sub {
+                        display: flex;
+                        flex-direction: column;
+                        row-gap: 15px;
+                    }
+        
+                    &-link {
+                        color: $white;
+                        padding-left: 20px;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        column-gap: 20px;        
+                        & ion-icon {
+                            padding-left: 10px;
+                            font-size: 32px;
+                        }
+                    }
+        
+                    &-sub {
+                        display: none; // Изначально подкатегории скрыты
+                        position: absolute;
+                        top: 0;
+                        left: 100%;
+                        background-color: $red;
+                        width: 300px;
+                        
+                        padding: 15px 20px;
+
+        
+                        .catalogs-menu-list-item-sub-item {
+                            .catalogs-menu-list-item-sub-item-link {
+                                text-decoration: none;
+                                color: $white;
+                                display: block;
+                                padding: 3px 0;
+        
+                                &:hover {
+                                    color: $white;
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
     }
-    &-user {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        column-gap: 25px;
-        &-profile{
-            &-link{
-                &-images{
-                    border-radius: $b-radius-circle;
-                    height: 50px;
-                    width: 50px;
-
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
+    & .menu {
+        &-list {
+            display: flex;
+            column-gap: 15px;
+            &-item {
+                position: relative;
+                &-link {
+                    color: $white;
+                    padding-right: 15px;
                 }
+                &:nth-child(5) {
+                    &::after {
+                        display: none;
+                    }
+                }
+                &::after {
+                    content: ' ';
+                    display: block;
+                    position: absolute;
+                    width: 2px;
+                    height: 100%;
+                    background-color: $red;
+                    right: 0;
+                    top: 0;
+                    
+                }  
+                              
             }
-        }
-        &-basket {
-            & > a {
-                color: $red;
-                font-size: 1.6rem;
-            }
-        }
+        }        
     }
 }
 .footer {
@@ -184,5 +262,48 @@ body {
     &-wrapper {
         flex-wrap: wrap;
         @include df-wrapper;
+    }
+}
+
+.card-box {
+    width: 23%;
+    border: 2px solid $red;
+    padding: 10px;
+    &-images {}
+    &-box {
+        &-title{
+            & h4 {}
+            & h5 {}
+        }
+        &-desc {
+            &-row{
+                &-span {}
+            }
+        }
+        &-price {
+            &-tag{}
+            &-price{}
+            &-span{
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+                column-gap: 5px;
+                & ion-icon {
+                    color: $red;
+                    font-size: 1.4rem;
+                }
+            }
+        }
+        &-buttons {
+             width: 100%;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+            &-add {
+                background-color: $red;
+                padding: 8px 55px;
+                color: $white;
+            }
+        }
     }
 }

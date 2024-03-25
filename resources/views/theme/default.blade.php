@@ -7,7 +7,7 @@
     <title>{{ env('APP_NAME') }}</title>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    @vite('resources/sass/app.scss')
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
     <x-template.navigation />
