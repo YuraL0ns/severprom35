@@ -8,15 +8,26 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductCharacteristicController;
 
+use App\Http\Controllers\TestingController;
+
 Route::name('sait.')
     ->group(function(){
-        Route::get('/', [MainController::class, 'homePage'])->name('home');
-        Route::get('/1', [CategoryController::class, 'importFromXml']);
-        Route::get('/2', [ProductController::class, 'importFromXml']);
+//        Route::get('/', [MainController::class, 'homePage'])->name('home');
+//        Route::get('/1', [CategoryController::class, 'importFromXml']);
+//        Route::get('/2', [ProductController::class, 'importFromXml']);
+//        Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+//        Route::get('/categories/{id}', [CategoryController::class, 'show'])->name('categories.show');
+//        Route::get('/categories/{id}/{article}', [ProductController::class, 'show'])->name('products.show');
+        Route::get('/', [TestingController::class, 'home']);
+        Route::get('categories', [TestingController::class, 'cats']);
+        Route::get('categories/test', [TestingController::class, 'fullCard']);
+        Route::get('user', [TestingController::class, 'user']);
+        Route::get('basket', [TestingController::class, 'basket']);
+        Route::get('page', [TestingController::class, 'pages']);
     });
-    Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
-    Route::get('/categories/{id}', [CategoryController::class, 'show'])->name('categories.show');
-    Route::get('/categories/{id}/{article}', [ProductController::class, 'show'])->name('products.show');
+
+
+
 
 Auth::routes();
 
