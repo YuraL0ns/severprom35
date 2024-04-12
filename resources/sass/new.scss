@@ -304,12 +304,36 @@ a {
     }
 }
 .item-card {
+    width: 100%;
+    &__element {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        column-gap: 50px;
+    }
     &__header{}
-    &__images{}
+
     &__desc{
+        width: 100%;
+
         &-list{
             &-item{
-                &-span {}
+                &-span {
+                    &:nth-child(2){}
+                }
+            }
+        }
+    }
+    &__group {
+        &-btn{}
+        &-content{
+            &-area{
+
+            }
+            #card{
+                &-one{}
+                &-two{display:none;}
+                &-three{display:none;}
             }
         }
     }
@@ -357,4 +381,92 @@ a {
             }
         }
     }
+}
+
+.item-card__slider{
+    position: relative;
+}
+.slides {
+    width: 600px;
+    height: 600px;
+}
+.slide {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+.thumbnails {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 155px;
+}
+.thumb-box {
+    width: 150px;
+    height: 150px;
+}
+.thumb {
+    cursor: pointer;
+    opacity: .6;
+    width: 100%;
+    background-size: contain;
+}
+.thumb:hover  {
+    opacity: 1;
+}
+/* Styles for the modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.prev {
+    left: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
 }
