@@ -25,11 +25,38 @@ ul, li {
 a {
     text-decoration: none;
 }
+.row {
+
+}
 .wrapper {
     width: 1200px;
     margin: 0 auto;
     padding: 15px;
 
+}
+.crowns {
+    display: flex;
+    flex-direction: row;
+    &-item {
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: -0.5px;
+        color: #c5c5c5;
+        margin-left: 10px;
+
+            &::after {
+                content: " / ";
+                padding-left: 10px;
+            }
+        &:nth-child(4)::after
+        {
+            content: none;
+        }
+        &-active {
+            font-weight: 500;
+            color: $red;
+        }
+    }
 }
 .header {
     margin-top: 30px;
@@ -41,7 +68,7 @@ a {
     }
     & .logo {
         & img {
-            width: 270px;
+            width: 275px;
         }
     }
     & .menu {
@@ -55,9 +82,17 @@ a {
                     transition: all .5s ease-in;
                     &:hover {
                         color: $red;
+                        text-decoration: underline;
+                        text-decoration-color: $red;
+                        text-decoration-thickness: 1.5px;
+                        text-underline-offset: 5px;
                     }
                     &:focus {
                         color: $red;
+                        text-decoration: underline;
+                        text-decoration-color: $red;
+                        text-decoration-thickness: 1.5px;
+                        text-underline-offset: 5px;
                     }
                 }
             }
@@ -73,7 +108,7 @@ a {
             height: 36px;
             width: 36px;
             border: 1px solid $red;
-            border-radius: 25%;
+            //border-radius: 25%;
             transition: all .5s ease;
             ion-icon {
                 color: $red;
@@ -87,14 +122,239 @@ a {
     }
 }
 .main {
+    height: 290px;
     &-wrapper {
         @include flex-row;
     }
     & .navbar {
+        height: 100%;
+        max-height: 290px;
         background-color: $red;
+        min-width: 290px;
+        padding:  25px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        &-list {
+            display: flex;
+            flex-direction: column;
+            row-gap: 30px;
+            &__item {
+                &-link {
+                    display: flex;
+                    flex-direction: row;
+                    column-gap: 10px;
+                    font-weight: 500;
+                    color: $white;
+                    font-size: 14px;
+                    ion-icon {
+                        color: $white;
+                        font-size: 21px;
+                    }
+                    &:hover {
+                        text-decoration: underline;
+                        text-decoration-thickness: 1.5px;
+                        text-underline-offset: 5px;
+                    }
+                }
+            }
+        }
     }
     & .rated {
-        @include flex-row;
+        display:grid;
+        margin-left: 20px;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 10px;
+        height: 290px;
+
+        & .card-box {
+            &_rated {
+                max-height: 290px;
+                background-color: $white;
+                color: $black;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                width: 100%;
+                padding: 20px 20px 0;
+                &-images {
+                    margin: 0 auto;
+                    width: 55%;
+                }
+                &-header{
+                    font-size: 16px;
+                    font-weight: 500;
+                    text-align: left;
+                    line-height: 1.5;
+                }
+                &-article {
+                    font-weight: 300;
+                    font-size: 12px;
+                    color: #c5c5c5;
+                    text-transform: lowercase;
+                    margin-top: 10px;
+                }
+                &-price {
+                    margin-top: 20px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    width: 100%;
+                    position: relative;
+
+                    &-header {
+                        font-size: 24px;
+                        font-weight: 400;
+                        padding-bottom: 5px;
+                    }
+                    &-btn {
+                        color: $white;
+                        background-color: $red;
+                        padding: 10px 25px;
+                        position: absolute;
+                        right: -20px;
+                        bottom: 0px;
+                    }
+                }
+            }
+        }
     }
 }
+.area{
+    margin: 50px 0;
+    &-wrapper  {
+        display: flex;
+    }
+    &-header {
+        color: $white;
+        text-decoration-thickness: 2px;
+        text-decoration: underline;
+        text-underline-offset: 5px;
+        text-decoration-color: $red;
+    }
+    .card {
+        &-grid {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            row-gap: 30px;
+            justify-content: space-between;
+            flex: 1 0 auto;
+        }
+        &-box {
+            width: 23%;
+            background-color: #fff;
+            color: black;
+            padding: 10px;
+            &__images{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            &__header{
+                font-size: 16px;
+                line-height: 1.4;
+                font-weight: 400;
+            }
+            &__article{
+                color: #c5c5c5;
+                text-transform: lowercase;
+            }
+            &__desc {
+                margin-top: 15px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                row-gap: 10px;
 
+               &-item {
+
+                   display: flex;
+                   justify-content: space-between;
+                   font-size: 14px;
+                   align-items: center;
+                   &-name{
+                       color: #c5c5c5;
+                   }
+                   &-value{
+                       color: $black;
+                   }
+               }
+            }
+            &__price{
+                margin-top: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                &-header {
+                    font-weight: 300;
+                    font-size: 24px;
+                }
+                &-btn {
+                    color: $white;
+                    padding: 10px 15px;
+                    background-color: $red;
+                }
+            }
+        }
+    }
+}
+.item-card {
+    &__header{}
+    &__images{}
+    &__desc{
+        &-list{
+            &-item{
+                &-span {}
+            }
+        }
+    }
+}
+.footer {
+    &-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &-logo {
+        width: 275px;
+        & img {
+            width: 100%;
+        }
+    }
+    &-menu {
+        &__list {
+            display: flex;
+            column-gap: 15px;
+            &-item{
+                &-link{
+                    color: $white;
+                }
+            }
+        }
+    }
+    &-contacts {
+        display: flex;
+        flex-direction: column;
+        row-gap: 15px;
+        & a {
+            display: flex;
+            flex-direction: row;
+            color: $white;
+            align-items: center;
+            justify-content: space-between;
+            column-gap: 15px;
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            & ion-icon {
+                color: $red;
+                font-size: 20px;
+            }
+        }
+    }
+}

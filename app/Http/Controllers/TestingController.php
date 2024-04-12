@@ -8,7 +8,9 @@ class TestingController extends Controller
         return view('templa.home.home');
     }
     public function cats(){}
-    public function fullCard(){}
+    public function fullCard(){
+        return view('templa.card.card');
+    }
     public function user(){}
     public function basket(){}
     public function pages(){}
