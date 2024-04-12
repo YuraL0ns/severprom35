@@ -1,0 +1,100 @@
+@import "./new-mix.scss";
+@import url(https://fonts.bunny.net/css?family=roboto:100,300,400,500,700,900);
+//Colors
+$black: #2D2D2D;
+$white: #FFF;
+$red: #E3193B;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: $white;
+    background-color: $black;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+}
+ul, li {
+    list-style-type: none;
+}
+a {
+    text-decoration: none;
+}
+.wrapper {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+
+}
+.header {
+    margin-top: 30px;
+    &-wrapper{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    & .logo {
+        & img {
+            width: 270px;
+        }
+    }
+    & .menu {
+        &-list{
+            display: flex;
+            column-gap: 25px;
+            &__item{
+                &-link{
+                    color: $white;
+                    padding-bottom: 3px;
+                    transition: all .5s ease-in;
+                    &:hover {
+                        color: $red;
+                    }
+                    &:focus {
+                        color: $red;
+                    }
+                }
+            }
+        }
+    }
+    & .user {
+        display: flex;
+        column-gap: 15px;
+        & a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 36px;
+            width: 36px;
+            border: 1px solid $red;
+            border-radius: 25%;
+            transition: all .5s ease;
+            ion-icon {
+                color: $red;
+                font-size: 20px;
+            }
+            &:hover {
+                border: 1px solid $white;
+                background-color: $white;
+            }
+        }
+    }
+}
+.main {
+    &-wrapper {
+        @include flex-row;
+    }
+    & .navbar {
+        background-color: $red;
+    }
+    & .rated {
+        @include flex-row;
+    }
+}
+

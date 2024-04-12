@@ -1,9 +1,9 @@
 <section class="header">
-    <div class="section-wrapper">
+    <div class="header-wrapper wrapper">
 
         <div class="logo">
             <a href="#">
-                <img src="" alt="Logo">
+                <img src="{{asset('images/logo.svg')}}" alt="Logo">
             </a>
         </div>
 
@@ -27,11 +27,11 @@
         <div class="user">
 
             <a href="#">
-                icon
+                <ion-icon name="person"></ion-icon>
             </a>
 
             <a href="#">
-                icon
+                <ion-icon name="basket"></ion-icon>
             </a>
 
         </div>
