@@ -68,3 +68,39 @@ document.addEventListener('DOMContentLoaded', function() {
     // Инициализация слайдера
     updateSlides();
 });
+
+//Вкладки на странице товаров
+// Функция инициализации вкладок
+function initTabs(btnSelector, contentSelector) {
+    let tabs = document.querySelectorAll(btnSelector);
+    let contents = document.querySelectorAll(contentSelector);
+
+    // Функция для показа конкретной вкладки
+    function showTab(event) {
+        event.preventDefault();
+
+        // Удаляем активный класс у всех кнопок и скрываем все блоки
+        tabs.forEach(tab => tab.classList.remove('active'));
+        contents.forEach(content => content.style.display = 'none');
+
+        // Добавляем активный класс к нажатой кнопке
+        this.classList.add('active');
+
+        // Находим и показываем соответствующий блок
+        const contentId = this.getAttribute('href');
+        document.querySelector(contentId).style.display = 'block';
+    }
+
+    // Добавляем обработчики событий ко всем кнопкам
+    tabs.forEach(tab => tab.addEventListener('click', showTab));
+
+    // Показываем первую вкладку по умолчанию
+    if (tabs.length > 0) {
+        tabs[0].click();
+    }
+}
+
+// Инициализация вкладок при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+    initTabs('.item-card__group-btn-item', '.item-card__group-content-area');
+});

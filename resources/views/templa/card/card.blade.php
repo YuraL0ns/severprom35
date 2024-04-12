@@ -12,56 +12,76 @@
 
                 <div class="item-card__slider">
                    <div class="slides">
-                       <img class="slide" src="{{asset('images/item/images_2.png')}}" alt="">
-                       <img class="slide" src="{{asset('images/item/images_3.png')}}" alt="">
-                       <img class="slide" src="{{asset('images/item/images_4.jpg')}}" alt="">
+                       <img class="slide" src="https://picsum.photos/600/600?random=1" alt="">
+                       <img class="slide" src="https://picsum.photos/600/600?random=2" alt="">
+                       <img class="slide" src="https://picsum.photos/600/600?random=3" alt="">
+                       <img class="slide" src="https://picsum.photos/600/600?random=4" alt="">
+                       <img class="slide" src="https://picsum.photos/600/600?random=5" alt="">
                    </div>
                     <div class="thumbnails">
                         <div class="thumb-box">
-                            <img src="{{asset('images/item/images_2.png')}}" class="thumb" data-index="0" alt="">
+                            <img src="https://picsum.photos/600/600?random=1" class="thumb" data-index="0" alt="">
                         </div>
                         <div class="thumb-box">
-                            <img src="{{asset('images/item/images_3.png')}}" class="thumb" data-index="1" alt="">
+                            <img src="https://picsum.photos/600/600?random=2" class="thumb" data-index="1" alt="">
                         </div>
                         <div class="thumb-box">
-                            <img src="{{asset('images/item/images_4.jpg')}}" class="thumb" data-index="2" alt="">
+                            <img src="https://picsum.photos/600/600?random=3" class="thumb" data-index="2" alt="">
+                        </div>
+                        <div class="thumb-box">
+                            <img src="https://picsum.photos/600/600?random=4" class="thumb" data-index="2" alt="">
+                        </div>
+                        <div class="thumb-box">
+                            <img src="https://picsum.photos/600/600?random=5" class="thumb" data-index="2" alt="">
                         </div>
                     </div>
                 </div>
 
                 <div class="item-card__desc">
-                    <div class="order">
-
+                    <div class="item-card__desc-order">
+                        <p class="item-card__desc-order-art">Артикул: <span class="item-card__desc-order-art-span">123456789</span></p>
+                        <h3 class="item-card__desc-order-header">
+                            Цена: <span>123456 <span class="equ">&#8381;</span></span>
+                        </h3>
+                        <a class="item-card__desc-order-link" href="#">Добавить в корзину
+                            <ion-icon name="basket"></ion-icon></a>
+                    </div>
+                    <div class="item-card__desc-support">
+                        <div class="item-card__desc-support-item">Доставка в течении 7 дней</div>
+                        <div class="item-card__desc-support-item">Гарантия возврата средств</div>
+                        <div class="item-card__desc-support-item">Гарантия 3 года </div>
+                        <div class="item-card__desc-support-item">Оплата любым способом</div>
                     </div>
                     <ul class="item-card__desc-list">
                         <li class="item-card__desc-list-item">
-                            <span class="item-card__desc-list-item-span">1</span>
-                            <span class="item-card__desc-list-item-span">2</span>
+                            <span class="item-card__desc-list-item-span">Страна производитель</span>
+                            <span class="item-card__desc-list-item-span">Россия <span class="fi fi-ru"></span></span>
                         </li>
                         <li class="item-card__desc-list-item">
-                            <span class="item-card__desc-list-item-span">1</span>
-                            <span class="item-card__desc-list-item-span">2</span>
+                            <span class="item-card__desc-list-item-span">Бренд</span>
+                            <span class="item-card__desc-list-item-span">TOR</span>
                         </li>
                         <li class="item-card__desc-list-item">
-                            <span class="item-card__desc-list-item-span">1</span>
-                            <span class="item-card__desc-list-item-span">2</span>
+                            <span class="item-card__desc-list-item-span">Год модельный</span>
+                            <span class="item-card__desc-list-item-span">2024 г.</span>
                         </li>
                         <li class="item-card__desc-list-item">
-                            <span class="item-card__desc-list-item-span">1</span>
-                            <span class="item-card__desc-list-item-span">2</span>
+                            <span class="item-card__desc-list-item-span">Размеры (ш*в*г*д)мм</span>
+                            <span class="item-card__desc-list-item-span">500*500*800*1500</span>
                         </li>
                         <li class="item-card__desc-list-item">
-                            <span class="item-card__desc-list-item-span">1</span>
-                            <span class="item-card__desc-list-item-span">2</span>
+                            <span class="item-card__desc-list-item-span">Материал</span>
+                            <span class="item-card__desc-list-item-span">Пластик, резина</span>
                         </li>
                         <li class="item-card__desc-list-item">
-                            <span class="item-card__desc-list-item-span">1</span>
-                            <span class="item-card__desc-list-item-span">2</span>
+                            <span class="item-card__desc-list-item-span">Вес</span>
+                            <span class="item-card__desc-list-item-span">50 кг</span>
                         </li>
                         <li class="item-card__desc-list-item">
-                            <span class="item-card__desc-list-item-span">1</span>
-                            <span class="item-card__desc-list-item-span">2</span>
+                            <span class="item-card__desc-list-item-span">Нагрузка</span>
+                            <span class="item-card__desc-list-item-span">250 кг</span>
                         </li>
+
                     </ul>
                 </div>
 
@@ -75,45 +95,53 @@
                 </div>
 
                 <div class="item-card__group-content">
-                    {{--First block --}}
-                    {{-- Таблица с характеристиками --}}
-                    {{-- Таблица с характеристиками --}}
+
+
                     <div class="item-card__group-content-area" id="card-one">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A beatae culpa debitis deleniti dicta
-                        dolorem, doloremque dolores ea earum eius est et eveniet impedit ipsa minima natus numquam odit
-                        perspiciatis qui quia quidem quo recusandae reiciendis reprehenderit repudiandae sapiente sint
-                        sunt temporibus unde ut. Accusamus aliquid, aspernatur consequatur, dignissimos esse et fugit
-                        impedit iure labore natus neque obcaecati officia omnis quas quisquam recusandae rem repellat
-                        repellendus saepe, sequi vero voluptas voluptatum. Autem consectetur culpa cumque cupiditate
-                        dolor,
-                        eaque esse illo impedit in ipsam ipsum iusto libero maiores maxime molestias nemo nisi quae quia
-                        quidem quo repudiandae sapiente vel vero, vitae.
+                        <table class="item-card__table">
+                            <thead class="item-card__table-thead">
+                            <tr class="item-card__table-thead-tr">
+                                <th class="item-card__table-thead-tr-th">Название</th>
+                                <th class="item-card__table-thead-tr-th">Значение</th>
+                            </tr>
+                            </thead>
+                            <tbody class="item-card__table-tbody">
+                                <tr class="item-card__table-tbody-tr">
+                                    <td class="item-card__table-tbody-tr-td">Название</td>
+                                    <td class="item-card__table-tbody-tr-td">Значение</td>
+                                </tr>
+                                <tr class="item-card__table-tbody-tr">
+                                    <td class="item-card__table-tbody-tr-td">Название</td>
+                                    <td class="item-card__table-tbody-tr-td">Значение</td>
+                                </tr><tr class="item-card__table-tbody-tr">
+                                    <td class="item-card__table-tbody-tr-td">Название</td>
+                                    <td class="item-card__table-tbody-tr-td">Значение</td>
+                                </tr><tr class="item-card__table-tbody-tr">
+                                    <td class="item-card__table-tbody-tr-td">Название</td>
+                                    <td class="item-card__table-tbody-tr-td">Значение</td>
+                                </tr><tr class="item-card__table-tbody-tr">
+                                    <td class="item-card__table-tbody-tr-td">Название</td>
+                                    <td class="item-card__table-tbody-tr-td">Значение</td>
+                                </tr><tr class="item-card__table-tbody-tr">
+                                    <td class="item-card__table-tbody-tr-td">Название</td>
+                                    <td class="item-card__table-tbody-tr-td">Значение</td>
+                                </tr>
+
+
+
+
+
+
+                            </tbody>
+                        </table>
                     </div>
-                    {{--First block --}}
-                    {{--First block --}}
                     <div class="item-card__group-content-area" id="card-two">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A beatae culpa debitis deleniti dicta
-                        dolorem, doloremque dolores ea earum eius est et eveniet impedit ipsa minima natus numquam odit
-                        perspiciatis qui quia quidem quo recusandae reiciendis reprehenderit repudiandae sapiente sint
-                        sunt temporibus unde ut. Accusamus aliquid, aspernatur consequatur, dignissimos esse et fugit
-                        impedit iure labore natus neque obcaecati officia omnis quas quisquam recusandae rem repellat
-                        repellendus saepe, sequi vero voluptas voluptatum. Autem consectetur culpa cumque cupiditate
-                        dolor,
-                        eaque esse illo impedit in ipsam ipsum iusto libero maiores maxime molestias nemo nisi quae quia
-                        quidem quo repudiandae sapiente vel vero, vitae.
+                        2
                     </div>
                     {{--First block --}}
                     {{--First block --}}
                     <div class="item-card__group-content-area" id="card-three">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A beatae culpa debitis deleniti dicta
-                        dolorem, doloremque dolores ea earum eius est et eveniet impedit ipsa minima natus numquam odit
-                        perspiciatis qui quia quidem quo recusandae reiciendis reprehenderit repudiandae sapiente sint
-                        sunt temporibus unde ut. Accusamus aliquid, aspernatur consequatur, dignissimos esse et fugit
-                        impedit iure labore natus neque obcaecati officia omnis quas quisquam recusandae rem repellat
-                        repellendus saepe, sequi vero voluptas voluptatum. Autem consectetur culpa cumque cupiditate
-                        dolor,
-                        eaque esse illo impedit in ipsam ipsum iusto libero maiores maxime molestias nemo nisi quae quia
-                        quidem quo repudiandae sapiente vel vero, vitae.
+                        3
                     </div>
                     {{--First block --}}
                 </div>

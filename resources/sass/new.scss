@@ -1,5 +1,7 @@
 @import "./new-mix.scss";
 @import url(https://fonts.bunny.net/css?family=roboto:100,300,400,500,700,900);
+@import url(https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css);
+
 //Colors
 $black: #2D2D2D;
 $white: #FFF;
@@ -26,7 +28,7 @@ a {
     text-decoration: none;
 }
 .row {
-
+    margin: 25px 0;
 }
 .wrapper {
     width: 1200px;
@@ -38,7 +40,7 @@ a {
     display: flex;
     flex-direction: row;
     &-item {
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 400;
         letter-spacing: -0.5px;
         color: #c5c5c5;
@@ -311,30 +313,158 @@ a {
         width: 100%;
         column-gap: 50px;
     }
-    &__header{}
-
-    &__desc{
+    &__header{
+        margin: 35px 0;
+        font-size: 24px;
+        font-weight: 500;
+    }
+    &__table {
+        margin-top: 10px;
         width: 100%;
+        border-collapse: collapse;
+        &-thead{
+            background-color: $red;
+            height: 40px;
+            &-tr{
+                &-th{
+                    font-size: 16px;
+                    font-weight: 300;
+                    &:nth-child(2){
+                        border-right: 1px solid $red;
+                    }
+                }
+            }
+        }
+        &-tbody{
+            color: $red;
+            &-tr{
+                height: 35px;
 
-        &-list{
-            &-item{
-                &-span {
-                    &:nth-child(2){}
+                border-bottom: 1px solid $red;
+                &-td{
+                    padding: 0 20px;
+                    font-weight: 400;
+                    color: $white;
+                    &:nth-child(1){
+                        border-right: 1px solid $red;
+                        border-left: 1px solid $red;
+                    }
+                    &:nth-child(2){
+                        border-right: 1px solid $red;
+                    }
                 }
             }
         }
     }
-    &__group {
-        &-btn{}
-        &-content{
-            &-area{
 
+    &__desc{
+        width: 100%;
+        &-list {
+            width: 100%;
+
+            &-item{
+                display: flex;
+                justify-content: space-between;
+                border-bottom: 2px solid $red;
+                padding: 15px 5px;
+                &-span{
+                    &:nth-child(1){
+                        color: #c5c5c5;
+                        font-size: 14px;
+                        height: 100%;
+
+                    }
+                    &:nth-child(2){
+                        font-size: 14px;
+                        font-weight: 400;
+                        letter-spacing: 1.2px;
+                    }
+                }
             }
-            #card{
-                &-one{}
-                &-two{display:none;}
-                &-three{display:none;}
+        }
+        &-support {
+            margin: 25px 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 15px;
+            align-items: center;
+            height: auto;
+            color: $red;
+            &-item {
+                display: flex;
+                align-items: center;
+                background-color:$red;
+                color: $white;
+                height: 50px;
+                padding: 0 20px;
             }
+        }
+        &-order {
+            width: 100%;
+            &-art{
+                padding: 10px 0 5px;
+                font-weight: 300;
+                font-size: 14px;
+                text-transform: uppercase;
+                &-span{
+                    font-weight: 600;
+                    letter-spacing: 1.2px;
+                }
+            }
+            &-header{
+                font-weight: 500;
+                font-size: 32px;
+                padding: 10px 0;
+                color: #c5c5c5;
+                & > span {
+                    color: $white;
+                }
+                & .equ {
+                    color: $red;
+                }
+
+                margin-bottom: 15px;
+            }
+            &-link{
+
+                display: flex;
+                align-items: center;
+                column-gap: 20px;
+                justify-content: center;
+
+                font-size: 20px;
+
+                padding: 20px 0;
+                background-color: $red;
+                color: $white;
+            }
+        }
+    }
+    &__group {
+        margin: 20px;
+        &-btn{
+            margin-bottom: 20px;
+            &-item {
+                padding: 15px 10px;
+                color: $red;
+                &:hover {
+                    color: $white;
+                }
+                &.active{
+                    background-color: $red;
+                    color: white;
+                }
+            }
+        }
+        &-content{
+            margin-top: 40px;
+            &-area{
+                display: none;
+                &:first-child{
+                    display: block;
+                }
+            }
+
         }
     }
 }
@@ -399,11 +529,12 @@ a {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    justify-content: space-between;
     height: 155px;
 }
 .thumb-box {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
 }
 .thumb {
     cursor: pointer;
