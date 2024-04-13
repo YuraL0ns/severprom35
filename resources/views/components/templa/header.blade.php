@@ -2,7 +2,7 @@
     <div class="header-wrapper wrapper">
 
         <div class="logo">
-            <a href="#">
+            <a href="{{route('sait.home')}}">
                 <img src="{{asset('images/logo.svg')}}" alt="Logo">
             </a>
         </div>

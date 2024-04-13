@@ -18,12 +18,12 @@ Route::name('sait.')
 //        Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 //        Route::get('/categories/{id}', [CategoryController::class, 'show'])->name('categories.show');
 //        Route::get('/categories/{id}/{article}', [ProductController::class, 'show'])->name('products.show');
-        Route::get('/', [TestingController::class, 'home']);
-        Route::get('categories', [TestingController::class, 'cats']);
+        Route::get('/', [TestingController::class, 'home'])->name('home');
+//        Route::get('categories', [TestingController::class, 'cats']);
         Route::get('categories/test', [TestingController::class, 'fullCard'])->name('item');
-        Route::get('user', [TestingController::class, 'user']);
-        Route::get('basket', [TestingController::class, 'basket']);
-        Route::get('page', [TestingController::class, 'pages']);
+        Route::get('user', [TestingController::class, 'user'])->name('profile');
+        Route::get('basket', [TestingController::class, 'basket'])->name('basket');
+        Route::get('page', [TestingController::class, 'pages'])->name('page');
     });
 
 
