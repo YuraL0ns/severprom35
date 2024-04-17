@@ -3,7 +3,7 @@
 
         <div class="logo">
             <a href="{{route('sait.home')}}">
-                <img src="{{asset('images/logo.svg')}}" alt="Logo">
+                <img src="{{asset('images/logo/logo-new.svg')}}" alt="Logo">
             </a>
         </div>
 
@@ -26,11 +26,11 @@
 
         <div class="user">
 
-            <a href="#">
+            <a href="{{route('sait.profile')}}">
                 <ion-icon name="person"></ion-icon>
             </a>
 
-            <a href="#">
+            <a href="{{route('sait.basket')}}">
                 <ion-icon name="basket"></ion-icon>
             </a>
 

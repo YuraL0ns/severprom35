@@ -23,6 +23,14 @@ class User extends Authenticatable
         'password',
         'avatar',
         'role',
+        'first_name',
+        'last_name',
+        'patronymic',
+        'company_id',
+        'phone',
+        'is_whatsapp',
+        'is_telegram',
+        'is_viber'
     ];
 
     /**
@@ -58,5 +66,10 @@ class User extends Authenticatable
     public function isUser()
     {
         return $this->role === 'user';
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
     }
 }

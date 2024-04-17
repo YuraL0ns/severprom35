@@ -19,6 +19,15 @@ return new class extends Migration
             $table->string('password');
             $table->string('role')->default('user');
             $table->string('avatar')->nullable();
+
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('patronymic')->nullable();
+            $table->string('company_id')->nullable();
+            $table->string('phone')->unique();
+            $table->boolean('is_whatsapp')->default(false);
+            $table->boolean('is_telegram')->default(false);
+            $table->boolean('is_viber')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

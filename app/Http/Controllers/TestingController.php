@@ -11,7 +11,11 @@ class TestingController extends Controller
     public function fullCard(){
         return view('templa.card.card');
     }
-    public function user(){}
-    public function basket(){}
-    public function pages(){}
+    public function user(){
+        return view('templa.user.user');
+    }
+    public function basket(){
+        return view('templa.basket.basket');
+    }
+
 }

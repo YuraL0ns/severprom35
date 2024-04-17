@@ -52,6 +52,13 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'patronymic' => ['nullable', 'string', 'max:255'],
+            'phone' => ['required', 'string', 'max:20', 'unique:users'],
+            'is_whatsapp' => ['required', 'boolean'],
+            'is_telegram' => ['required', 'boolean'],
+            'is_viber' => ['required', 'boolean'],
         ]);
     }
 
@@ -67,6 +74,13 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'patronymic' => $data['patronymic'],
+            'phone' => $data['phone'],
+            'is_whatsapp' => $data['is_whatsapp'],
+            'is_telegram' => $data['is_telegram'],
+            'is_viber' => $data['is_viber'],
         ]);
     }
 }
