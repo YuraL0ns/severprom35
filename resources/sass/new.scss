@@ -4,6 +4,7 @@
 
 //Colors
 $black: #2D2D2D;
+$gray: #999999;
 $white: #FFF;
 $red: #E3193B;
 $red-dark: #7c0b1f;
@@ -172,6 +173,7 @@ a {
         height: 290px;
 
         & .card-box {
+           
             &_rated {
                 max-height: 290px;
                 background-color: $white;
@@ -183,6 +185,7 @@ a {
                 width: 100%;
                 padding: 20px 20px 0;
                 &-images {
+                   
                     margin: 0 auto;
                     width: 55%;
                 }
@@ -253,6 +256,14 @@ a {
             color: black;
             padding: 10px;
             &__images{
+                &-box {
+                    width: 100%;
+                    & > img {
+                        width: 100%;
+                        object-fit: contain;
+                        height: 200px;
+                    }
+                }
                 width: 100%;
                 display: flex;
                 align-items: center;
@@ -262,10 +273,12 @@ a {
                 font-size: 16px;
                 line-height: 1.4;
                 font-weight: 400;
+                height: 90px;
             }
             &__article{
-                color: #c5c5c5;
-                text-transform: lowercase;
+                color: $gray;
+                font-weight: 500;
+                // text-transform: lowercase;
             }
             &__desc {
                 margin-top: 15px;

@@ -39,7 +39,7 @@ class CategoryController extends Controller
 
             $category->code = (string)$categoryXml->Код;
             $category->name = (string)$categoryXml->Название;
-            $category->parent_code = (string)$categoryXml->КодРодителя;
+            $category->parent_code = !empty($categoryXml->КодРодителя) ? (string)$categoryXml->КодРодителя : null;
             $category->description = (string)$categoryXml->ОписаниеРаздела;
 
             $category->save();

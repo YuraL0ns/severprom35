@@ -19,11 +19,11 @@
 
                 </ul>
             </div>
-            <div class="rated">
+            {{-- <div class="rated">
                 <x-templa.card-rated />
                 <x-templa.card-rated />
                 <x-templa.card-rated />
-            </div>
+            </div> --}}
         </div>
     </section>
 
@@ -34,18 +34,18 @@
         <div class="area-wrapper wrapper">
 
             <div class="card-grid">
-                <x-templa.card />
-                <x-templa.card />
-                <x-templa.card />
-                <x-templa.card />
-                <x-templa.card />
-                <x-templa.card />
-                <x-templa.card />
-                <x-templa.card />
-                <x-templa.card />
-                <x-templa.card />
-                <x-templa.card />
-                <x-templa.card />
+                @foreach ($products as $product)
+                    <x-templa.card 
+                        name="{{ $product->name }}" 
+                        img="{{ $product->main_image }}"
+                        altImg="{{ $product->name }}" 
+                        article="{{ $product->article }}" 
+                        price="{{ $product->price }}" 
+                        url="{{ route('sait.product', $product) }}" 
+                    />
+                @endforeach
+
+
             </div>
 
         </div>
