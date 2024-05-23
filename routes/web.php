@@ -18,7 +18,7 @@ Route::name('sait.')
         // Delete befeore production version
 
         Route::get('/', [ShopController::class, 'main_page'])->name('home');
-        Route::get('/categories/{categories}', [ShopController::class, 'categories'])->name('categories');
+        Route::get('/categories/{id}', [ShopController::class, 'categories'])->name('categories');
         Route::get('/category/{code}', [ShopController::class, 'category'])->name('category');
         Route::get('/product/{id}', [ShopController::class, 'product'])->name('product');
         Route::get('/basket', [ShopController::class, 'basket'])->name('basket');
