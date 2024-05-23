@@ -1,16 +1,20 @@
 @extends('templa.main')
 @section('content')
-Категории
-   {{-- resources/views/categories/index.blade.php --}}
-@foreach ($categories as $category)
-<h1>{{ $category->name }}</h1>
-@foreach ($category->children as $child)
-    <h2>
-        <a style="color: red;" href="{{ route('sait.category', ['code' => $child->code]) }}">{{ $child->name }}</a>
-    </h2>
-@endforeach
-@endforeach
+Категория
 
+@if ($subcategories->isNotEmpty())
+    <ul>
+        @foreach ($subcategories as $subchild )
+            <li>
+                <a href="{{route('sait.category', ['code' => $subchild->code])}}">{{$subchild->name}}</a>
+            </li>
+        @endforeach
+    </ul>
+@endif
+
+@foreach ($products as $product )
+    <div>{{$product->name}}</div>
+@endforeach
 
 
 @endsection

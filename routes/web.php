@@ -18,11 +18,14 @@ Route::name('sait.')
         // Delete befeore production version
 
         Route::get('/', [ShopController::class, 'main_page'])->name('home');
-        Route::get('/categories/{id}', [ShopController::class, 'categories'])->name('categories');
+        // Route::get('/categories/{code}', [ShopController::class, 'categories'])->name('categories');
         Route::get('/category/{code}', [ShopController::class, 'category'])->name('category');
         Route::get('/product/{id}', [ShopController::class, 'product'])->name('product');
+        Route::get('/baskets', [ShopController::class, 'clearCart']);
         Route::get('/basket', [ShopController::class, 'basket'])->name('basket');
         Route::post('/basket/add/{productId}', [ShopController::class, 'addProductToBasket'])->name('add.to.basket');
+        Route::post('/basket/update/{productId}/{quantity}', [ShopController::class, 'updateProductInBasket'])->name('update.to.basket');
+        Route::post('/basket/remove/{productId}', [ShopController::class, 'removeProductInBasket'])->name('remove.to.basket');
         Route::get('user', [TestingController::class, 'user'])->name('profile');
 
 

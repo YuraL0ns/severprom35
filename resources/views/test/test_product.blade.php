@@ -2,7 +2,7 @@
 @section('content')
 
 
-
+@csrf
     <div class="wrapper">
         <div class="item-card">
             <h1 class="item-card__header">{{$product->name}}</h1>
@@ -39,8 +39,8 @@
                         <h3 class="item-card__desc-order-header">
                             Цена: <span>{{$product->price}} <span class="equ">&#8381;</span></span>
                         </h3>
-                        <a class="item-card__desc-order-link" href="#">Добавить в корзину
-                            <ion-icon name="basket"></ion-icon></a>
+                        <button onclick="addToCart({{$product->id}})" class="item-card__desc-order-link" href="#">Добавить в корзину
+                            <ion-icon name="basket"></ion-icon></button>
                     </div>
                     <div class="item-card__desc-support">
                         <div class="item-card__desc-support-item">Доставка в течении 7 дней</div>
@@ -64,7 +64,7 @@
                                 @endforeach
                             </span>
                         </li>
-                    
+
                         <li class="item-card__desc-list-item">
                             <span class="item-card__desc-list-item-span">@foreach ($product->bonusSize as $bs )
                                 {{$bs->name}}
@@ -89,7 +89,7 @@
                         </li>
                         <li class="item-card__desc-list-item">
                             <span class="item-card__desc-list-item-span">Вес</span>
-                           
+
                             <span class="item-card__desc-list-item-span">
                                 @foreach ($product->bonusWih as $bw )
                                     {{$bw->value}} кг
@@ -144,5 +144,22 @@
                 </div>
             </div>
     </div>
+
+<script>
+    function addToCart(productId) {
+        fetch('{{route('sait.add.to.basket', '')}}/' + productId, {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                'Content-Type': 'application/json'
+            }
+        }).then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Товар добавлен в коризну');
+            }
+        })
+    }
+</script>
 
 @endsection

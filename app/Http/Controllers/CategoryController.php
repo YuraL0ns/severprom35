@@ -77,24 +77,14 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($code)
     {
         // $category = Category::find($id);
-        $category = Category::with(['children', 'products'])->find($id);
+        $category = Category::with(['children.products'])->where('code', $code)->firstOrFail();
 
         if (!$category) {
             abort(404);
         }
-
-        if ($category->parent_code === null) {
-            $subcategories = $category->children();
-            $products = $category->products;
-        } else {
-            $subcategories = collect();
-            $products = $category->products;
-        }
-
-
 
         return view('theme.page.categories.show', compact('category','subcategories','products'));
     }

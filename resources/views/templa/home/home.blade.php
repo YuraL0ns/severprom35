@@ -7,7 +7,7 @@
 
                     @foreach ($mainCategories as $categories)
                         <li class="navbar-list__item">
-                            <a href="{{route('sait.categories', $categories->id)}}" class="navbar-list__item-link">
+                            <a href="{{route('sait.category', $categories->code)}}" class="navbar-list__item-link">
                                 <ion-icon name="copy-outline"></ion-icon>
                                 {{ $categories->name }}
                             </a>

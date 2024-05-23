@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -25,9 +26,20 @@ class ShopController extends Controller
 
     public function categories($code)
     {
-        $categories = Category::whereNull('parent_code')->with('children')->get();
+        $categories = Category::whereNull('parent_code')->with('children.children.products')->first();
+        $subcategories = $categories->children;
+        $products = $categories->products;
 
-        return view('test.test_all_cat', compact('categories'));
+        if(!$categories){
+            return redirect()->route('sait.home')->with('error', 'Категория ненайдена');
+
+        }
+
+        return view('test.test_all_cat', [
+            'category' => $categories,
+            'products' => $products,
+            'subcategories' => $categories->children,
+        ]);
 
         // $categories = Category::where('is_active', true)->get();
         // return view('templa.categories.index', compact('categories'));
@@ -35,8 +47,12 @@ class ShopController extends Controller
 
     public function category($code)
     {
-        $category = Category::with('children.children.products')->where('code', $code)->firstOrFail();
+        $category = Category::with('children.children.products')->where('code', $code)->first();
 
+        if(!$category){
+            return redirect()->route('sait.home')->with('error', 'Категория ненайдена');
+
+        }
         $products = $category->products;
         foreach ($category->children as $child) {
             $products = $products->merge($child->products);
@@ -82,13 +98,48 @@ class ShopController extends Controller
     {
         $product = Product::findOrFail($productId);
         $cart = session()->get('cart', []);
-        $cart[$productId] = [
-            'name' => $product->name,
-            'quaniti' => 1,
-            'price' => $product->price,
-            'image' => $product->main_image
-        ];
+        if (isset($cart[$productId])) {
+            $cart[$productId]['quantity'] += 1;
+        } else {
+            $cart[$productId] = [
+                'name' => $product->name,
+                'quantity' => 1,
+                'price' => $product->price,
+                'image' => $product->main_image
+            ];
+        }
+
 
         session()->put('cart', $cart);
+        return response()->json(['success' => true, 'cart' => $cart]);
+    }
+    public function clearCart(){
+        session()->forget('cart');
+        return redirect()->back();
+    }
+
+    public function placeOrder(Request $request)
+    {
+        $cart = session()->get('cart');
+        $total = array_sum(array_map(function($item){
+            return $item['price'] * $item['quantity'];
+        }, $cart));
+
+        $order = Order::create([
+            'user_id' => auth()->id(),
+            'total' => $total,
+            'status' => 'pending'
+        ]);
+
+        foreach ($cart as $productId => $details) {
+            $order->items()->create([
+                'product_id' => $productId,
+                'quantity' => $details('quantity'),
+                'rpice' => $details('price')
+            ]);
+        }
+
+        session()->forget('cart');
+        return redirect()->route('order.complite');
     }
 }
