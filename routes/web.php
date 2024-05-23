@@ -11,11 +11,14 @@ use App\Http\Controllers\TestingController;
 
 Route::name('sait.')
     ->group(function () {
-        Route::get('/1', [CategoryController::class, 'importFromXml']);
-        Route::get('/2', [ProductController::class, 'importFromXml']);
+        Route::get('/1', [CategoryController::class, 'importFromXmlGruz']); // Import Categpories Gruz
+        Route::get('/2', [CategoryController::class, 'importFromXmlSklad']); // Import Categpories Sklad
+        Route::get('/3', [ProductController::class, 'importFromXmlGruz']);  // Import Products Gruz
+        Route::get('/4', [ProductController::class, 'importFromXmlSklad']);  // Import Products Skald
+        // Delete befeore production version
 
         Route::get('/', [ShopController::class, 'main_page'])->name('home');
-        Route::get('/categories', [ShopController::class, 'categories'])->name('categories');
+        Route::get('/categories/{categories}', [ShopController::class, 'categories'])->name('categories');
         Route::get('/category/{code}', [ShopController::class, 'category'])->name('category');
         Route::get('/product/{id}', [ShopController::class, 'product'])->name('product');
         Route::get('/basket', [ShopController::class, 'basket'])->name('basket');
@@ -26,7 +29,7 @@ Route::name('sait.')
         // Route::get('/', [ShopController::class, 'main_page'])->name('home');
         // Route::get('/categories', [ShopController::class, 'categories'])->name('categories');
         // Route::get('/category/{code}', [ShopController::class,'category'])->name('category');
-        
+
         // Route::get('/basket', [ShopController::class, 'basket'])->name('basket');
         // Route::get('/basket/add/{productId}', [ShopController::class, 'addProductToBasket']);
         // // Route::get('/', [TestingController::class, 'home'])->name('home');

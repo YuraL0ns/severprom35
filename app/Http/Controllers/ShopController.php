@@ -10,6 +10,7 @@ class ShopController extends Controller
 {
     public function main_page()
     {
+        $mainCategories = Category::whereNull('parent_code')->get();
         $products = Product::with('characteristics')->get()->random(12);
 
         // Проверяем, содержит ли коллекция элементы перед тем, как выбирать случайные
@@ -19,10 +20,10 @@ class ShopController extends Controller
             $randomProducts = collect(); // Создаем пустую коллекцию для безопасной работы с foreach
         }
 
-        return view('templa.home.home', compact('products'));
+        return view('templa.home.home', compact('products', 'mainCategories'));
     }
 
-    public function categories()
+    public function categories($code)
     {
         $categories = Category::whereNull('parent_code')->with('children')->get();
 

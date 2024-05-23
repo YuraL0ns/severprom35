@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductCharacteristicRequest;
 use App\Models\ProductCharacteristic;
 use Illuminate\Http\Request;
+
 
 class ProductCharacteristicController extends Controller
 {

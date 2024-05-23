@@ -4,26 +4,30 @@
         <div class="main-wrapper wrapper">
             <div class="navbar">
                 <ul class="navbar-list">
-                    <li class="navbar-list__item">
-                        <a class="navbar-list__item-link" href="#">
-                            <ion-icon name="copy-outline"></ion-icon>
-                            Грузоподъемное оборудование
-                        </a>
-                    </li>
-                    <li class="navbar-list__item">
-                        <a class="navbar-list__item-link" href="#">
-                            <ion-icon name="copy-outline"></ion-icon>
-                            Складское оборудование
-                        </a>
-                    </li>
 
+                    @foreach ($mainCategories as $categories)
+                        <li class="navbar-list__item">
+                            <a href="{{route('sait.categories', $categories->id)}}" class="navbar-list__item-link">
+                                <ion-icon name="copy-outline"></ion-icon>
+                                {{ $categories->name }}
+                            </a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
-            {{-- <div class="rated">
+
+
+            <div>
+
+
+
+            </div>
+
+            <div class="rated">
                 <x-templa.card-rated />
                 <x-templa.card-rated />
                 <x-templa.card-rated />
-            </div> --}}
+            </div>
         </div>
     </section>
 
@@ -35,14 +39,9 @@
 
             <div class="card-grid">
                 @foreach ($products as $product)
-                    <x-templa.card 
-                        name="{{ $product->name }}" 
-                        img="{{ $product->main_image }}"
-                        altImg="{{ $product->name }}" 
-                        article="{{ $product->article }}" 
-                        price="{{ $product->price }}" 
-                        url="{{ route('sait.product', $product) }}" 
-                    />
+                    <x-templa.card name="{{ $product->name }}" img="{{ $product->main_image }}"
+                        altImg="{{ $product->name }}" article="{{ $product->article }}" price="{{ $product->price }}"
+                        url="{{ route('sait.product', $product) }}" />
                 @endforeach
 
 
