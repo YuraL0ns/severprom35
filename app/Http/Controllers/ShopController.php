@@ -142,4 +142,40 @@ class ShopController extends Controller
         session()->forget('cart');
         return redirect()->route('order.complite');
     }
+
+    public function checkout(Request $request)
+    {
+        $cart = session()->get('cart');
+        if (!$cart) {
+            return redirect()->route('sait.basket')->with('error', 'Ваша корзина пуста');
+        }
+
+        $order = new Order();
+        $order->user_id = auth()->id();
+        $order->total = collect($cart)->sum(function($item){
+            return $item['quantity'] * $item['price'];
+        });
+        $order->status ='pending';
+        $order->customer_name = $request->name;
+        $order->customer_email = $request->email;
+        $order->customer_phone = $request->phone;
+        $order->adress = $request->adress;
+        $order->motes = $request->notes;
+        $order->save();
+
+        foreach($cart as $id => $item){
+            $order->items()->create([
+                'product_id' => $id,
+                'quantity' => $item['quantity'],
+                'price' => $item['price']
+            ]);
+
+            session()->forget('cart');
+
+            return redirect()->route('sait.order.success', ['order' => $order->id]);
+        }
+    }
+    public function showCheckoutForm() {
+        return view('templa.basket.checkout');
+    }
 }

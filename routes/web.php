@@ -26,6 +26,13 @@ Route::name('sait.')
         Route::post('/basket/add/{productId}', [ShopController::class, 'addProductToBasket'])->name('add.to.basket');
         Route::post('/basket/update/{productId}/{quantity}', [ShopController::class, 'updateProductInBasket'])->name('update.to.basket');
         Route::post('/basket/remove/{productId}', [ShopController::class, 'removeProductInBasket'])->name('remove.to.basket');
+        Route::get('/basket/checkout', [ShopController::class, 'showCheckoutForm'])->name('order.checkout.form');
+        Route::post('/basket/checkout', [ShopController::class, 'checkout'])->name('order.checkout');
+        Route::get('/order-confirmed/{order}', function($orderId) {
+            $order = \App\Models\Order::findOrFail($orderId);
+            return view('templa.basket.success', compact('order'));
+
+        })->name('order.success');
         Route::get('user', [TestingController::class, 'user'])->name('profile');
 
 

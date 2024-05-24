@@ -1,6 +1,11 @@
 @extends('templa.main')
 @section('content')
     <div class="wrapper">
+        @if (session('cart') && count(session('cart')) > 0)
+            <div style="text-align: right;">
+                <a href="{{route('sait.order.checkout.form')}}">Оформить</a>
+            </div>
+        @endif
         @if(count($cart) > 0)
             <table class="table">
                 <thead>
@@ -29,5 +34,5 @@
             @else
             <p>Ваша корзина пуста</p>
         @endif
-    </div>
+    </>
 @endsection

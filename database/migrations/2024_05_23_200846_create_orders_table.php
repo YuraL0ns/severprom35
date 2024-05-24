@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('customer_email')->nullable();
             $table->string('customer_phone')->nullable();
             $table->text('adress')->nullable();
-            $table->text('motes')->nullable();
+            $table->text('notes')->nullable();
             $table->timestamps();
         });
     }

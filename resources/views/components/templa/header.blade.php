@@ -10,7 +10,7 @@
         <div class="menu">
             <ul class="menu-list">
                 <li class="menu-list__item">
-                    <a class="menu-list__item-link" href="#">Главная</a>
+                    <a class="menu-list__item-link" href="{{route('sait.home')}}">Главная</a>
                 </li>
                 <li class="menu-list__item">
                     <a class="menu-list__item-link" href="#">Гарантия</a>
