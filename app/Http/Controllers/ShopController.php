@@ -160,7 +160,7 @@ class ShopController extends Controller
         $order->customer_email = $request->email;
         $order->customer_phone = $request->phone;
         $order->adress = $request->adress;
-        $order->motes = $request->notes;
+        $order->notes = $request->notes;
         $order->save();
 
         foreach($cart as $id => $item){

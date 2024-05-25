@@ -14,6 +14,7 @@ class Order extends Model
 
     protected $fillable = ['user_id', 'total', 'status'];
 
+
     public function items() : HasMany
     {
         return $this->hasMany(OrderItem::class);
