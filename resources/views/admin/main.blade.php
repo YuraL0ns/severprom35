@@ -57,7 +57,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Заказы</a>
+                        <a class="nav-link" href="{{route('admin.orders.index')}}">Заказы</a>
                     </li>
 
                 </ul>
