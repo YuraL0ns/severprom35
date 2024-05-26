@@ -27,27 +27,12 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Главная</a>
                     </li>
-
-                    {{-- <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Добавить из
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Ссылка</a></li>
-                  <li><a class="dropdown-item" href="#">Файл</a></li>
-                  
-                </ul>
-              </li> --}}
-
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.dashboard.import') }}">Добавить</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.dashboard.categories') }}">Категории</a>
                     </li>
-
-
-
                     <li class="nav-item">
                         <a class="nav-link" href="#">Товары</a>
                     </li>
