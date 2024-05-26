@@ -135,7 +135,7 @@ class ShopController extends Controller
             $order->items()->create([
                 'product_id' => $productId,
                 'quantity' => $details('quantity'),
-                'rpice' => $details('price')
+                'price' => $details('price')
             ]);
         }
 
@@ -168,12 +168,11 @@ class ShopController extends Controller
                 'product_id' => $id,
                 'quantity' => $item['quantity'],
                 'price' => $item['price']
-            ]);
-
-            session()->forget('cart');
-
-            return redirect()->route('sait.order.success', ['order' => $order->id]);
+            ]);  
         }
+        session()->forget('cart');
+
+        return redirect()->route('sait.order.success', ['order' => $order->id]);
     }
     public function showCheckoutForm() {
         return view('templa.basket.checkout');
