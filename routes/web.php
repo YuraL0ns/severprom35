@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\PagesController;
+use App\Http\Controllers\Admin\ProductsController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CategoryController;
@@ -9,7 +11,6 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\TestingController;
-
 
 
 
@@ -47,8 +48,11 @@ Route::get('/dashboard/categories', [AdminController::class, 'pages_categories']
 Route::get('/dashboard/import', [AdminController::class, 'showFormForImport'])->name('admin.dashboard.import');
 Route::post('/dashboard/import/file', [AdminController::class, 'getFromFile'])->name('admin.dashboard.file');
 Route::post('/dashboard/import/url', [AdminController::class, 'getFromUrl'])->name('admin.dashboard.url');
-
+Route::get('/categories-api', [\App\Http\Controllers\Admin\CategoryController::class, 'getCategories'])->name('categories.getApi');
 Route::prefix('dashboard')->name('admin.')->group(function () {
+    Route::resource('categories', \App\Http\Controllers\Admin\CategoryController::class);
+
+
     Route::resource('orders', OrderController::class);
     Route::get('orders/search', [OrderController::class, 'search'])->name('orders.search');
     Route::patch('orders/{order}/update_status', [OrderController::class,'update_status'])->name('orders.update_status');
@@ -56,7 +60,16 @@ Route::prefix('dashboard')->name('admin.')->group(function () {
     Route::post('orders/{order}/update-item/{item}', [OrderController::class,'updateOrderItem'])->name('orders.items.update');
     Route::post('orders/{order}/add-product', [OrderController::class, 'addProductToOrder'])->name('orders.add_product');
 
+
+    Route::resource('products', ProductsController::class);
+    Route::resource('pages', PagesController::class);
+    Route::post('pages/upload', [PagesController::class, 'upload'])->name('pages.upload');
 });
+
+Route::get('pages/{slug}', [PagesController::class, 'show'])->name('pages.show');
+
+
+
 
 
 // Route::prefix('dashboard')
